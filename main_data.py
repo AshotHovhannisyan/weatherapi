@@ -9,3 +9,11 @@ class Main_data(WeatherAPI):
     def set(self,day):
         if "Yerevan" == self.city:
             self.__forecast_days = day
+    def get(self):
+        return self.__forecast_days
+    def temperature(self, forecast_data, day):
+        return self.get_temperature(forecast_data, day)
+    def humidity(self, forecast_data, day):
+        return self.get_humidity(forecast_data, day)
+    def wind_speed(self, forecast_data, day):
+        return self.get_wind_speed(forecast_data, day)

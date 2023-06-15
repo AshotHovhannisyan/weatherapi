@@ -1,4 +1,4 @@
-from weatherapi import WeatherAPI
+
 from dotenv import dotenv_values
 from main_data import Main_data
 
@@ -11,17 +11,20 @@ result = Main_data(api_key)
 
 
 # forecast_data = weather_api.get_forecast_data(city, forecast_days)
+city = result.city = 'Yerevan'
+result.set(10)
+forecast_days = result.get()
 forecast_data = result.index()
-# if forecast_data is not None:
-#     for day in range(forecast_days):
-#         temperature = weather_api.get_temperature(forecast_data, day)
-#         humidity = weather_api.get_humidity(forecast_data, day)
-#         wind_speed = weather_api.get_wind_speed(forecast_data, day)
-#
-#         print(f"Day {day + 1}:")
-#         print(f"  Temperature in {city}: {temperature} °C")
-#         print(f"  Humidity in {city}: {humidity} %")
-#         print(f"  Wind Speed in {city}: {wind_speed} km/h")
-#         print()
-# else:
-#     print(f"Failed to fetch forecast data for {city}")
+
+
+temperature_data = []
+humidity_data = []
+wind_speed_data = []
+if forecast_data is not None:
+    for day in range(forecast_days):
+        temperature_data.append(result.temperature(forecast_data, day))
+        humidity_data.append(result.humidity(forecast_data, day))
+        wind_speed_data.append(result.wind_speed(forecast_data, day))
+print(temperature_data)
+print(humidity_data)
+print(wind_speed_data)
